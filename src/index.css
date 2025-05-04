@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+@theme {
+ --color-weback:rgb(32,37,58);
+ --color-wefront:rgb(89,192,161)   ;
+}
+.active{
+    @apply font-bold underline underline-offset-4 text-wefront;
+}
