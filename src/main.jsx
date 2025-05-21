@@ -5,6 +5,7 @@ import App from './App.jsx'
 import Footer from "./components/Footer/Footer"
 import { createBrowserRouter, RouterProvider } from "react-router";
 import Home from './components/Home/Home.jsx'
+import Shop from './components/Shop/Shop.jsx'
 const router = createBrowserRouter([{
   path: '/',
   element: <App />,
@@ -17,6 +18,9 @@ const router = createBrowserRouter([{
   }, {
     path: "/about",
     element: <Footer />
+  }, {
+    path: "/shop",
+    element: <Shop/>
   }]
 }]);
 createRoot(document.getElementById('root')).render(
