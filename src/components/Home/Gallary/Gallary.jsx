@@ -12,21 +12,21 @@ export class Gallary extends Component {
                     </span>
                 </div>
                 <div className='grid-cols-3 gap-3 grid-rows-3 grid mx-3 p-2 rounded-xl '>
-                    <div className='row-span-2 '>
-                        <img src={gallar} className='rounded-[5px] h-full w-full object-cover' alt="" />
+                    <div className='row-span-2 overflow-clip '>
+                        <img src={gallar} className='rounded-[5px] h-full w-full active:scale-125 transition-transform object-cover' alt="" />
                     </div>
-                    <div className='col-span-2 '>
-                        <img src={gallar} className='rounded-[5px] h-full w-full object-cover' alt="" />
+                    <div className='col-span-2 overflow-clip'>
+                        <img src={gallar} className='rounded-[5px] h-full w-full  active:scale-125 transition-transform object-cover' alt="" />
                     </div>
-                    <div className='col-span-1'>
-                        <img src={gallar} className='rounded-[5px] h-full w-full object-cover' alt="" />
+                    <div className='col-span-1 overflow-clip'>
+                        <img src={gallar} className='rounded-[5px] h-full w-full  active:scale-125 transition-transform object-cover' alt="" />
                     </div>
 
-                    <div className='row-span-2'>
-                        <img src={gallar} className='rounded-[5px] h-full w-full object-cover' alt="" />
+                    <div className='row-span-2 overflow-clip'>
+                        <img src={gallar} className='rounded-[5px] h-full w-full  active:scale-125 transition-transform object-cover' alt="" />
                     </div>
-                    <div className='col-span-2'>
-                        <img src={gallar} className='rounded-[5px] h-full w-full object-cover' alt="" />
+                    <div className='col-span-2 overflow-clip'>
+                        <img src={gallar} className='rounded-[5px] h-full w-full  active:scale-125 transition-transform object-cover' alt="" />
                     </div>
                 </div>
             </>

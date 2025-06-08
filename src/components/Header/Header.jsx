@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import simg from "../../assets/logo.jpeg";
-import trolly from "../../assets/cart-shopping-solid.svg";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-regular-svg-icons'
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
