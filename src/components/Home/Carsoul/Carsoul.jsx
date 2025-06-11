@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import carso from '../../../assets/Carsol_Logo.jpg'
+import carso from '../../../assets/Business_Card.jpeg'
 
 export default function Carsoul() {
     const [title,setTitle] = useState('Welcome to Maza Morya')
@@ -16,13 +16,16 @@ export default function Carsoul() {
                         </span>
                     </p>
                     </div>
-                    <div className='mx-2 md:text-2xl lg:mt-2 lg:overflow-y-scroll text-wrap lg:text-3xl '>{discrip}</div>
+                    <div className='mx-2 md:text-2xl lg:mt-2 lg:overflow-y-scroll text-wrapv text-justify lg:text-3xl '>{discrip}</div>
                     <div className='border-2 transition-transform border-wefront active:scale-110 active:drop-shadow-2xl shadow-green-600 md:text-xl lg:text-3xl rounded-[5px] text-wefront mx-2 p-2 w-fit h-fit'>SHOP NOW</div>
                 </div>
-                <div className='relative max-sm:pb-[60%] pb-[100%] overflow-hidden rounded-2xl lg:w-2/3 mx-2'>
-                    <img src={imgSrc} className='absolute active:scale-125 transition-all duration-500 ease-in-out opacity-80 object-center object-cover max-sm:w-full h-full' alt="img" />
+                <div className='relative max-sm:pb-[60%] overflow-hidden rounded-2xl lg:w-2/3 mx-2'>
+                    <img src={imgSrc} className='max-sm:absolute active:scale-125 transition-all duration-500 ease-in-out opacity-80 object-center object-cover max-sm:w-full h-full' alt="img" />
                 </div>
             </div>
+            
+
+
 
 
         </>

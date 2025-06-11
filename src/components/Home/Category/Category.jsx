@@ -1,9 +1,10 @@
 import React from 'react'
-import car from "../../../assets/Carsol_Logo.jpg"
+import gallar1 from '../../../assets/1 (2).jpeg'
+import gallar2 from '../../../assets/1 (4).jpeg'
 export default function Category() {
     return (
         <>
-            <div>
+            <div className=''>
 
                 <div className='flex justify-center '>
                     <span className='flex-grow h-1 w-full ml-10 self-center rounded-2xl bg-weback'>
@@ -15,14 +16,14 @@ export default function Category() {
                     </span>
                 </div>
 
-                <div className='flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 overflow-clip'>
-                    <div className='mb-3 max-sm:active:scale-105 active:shadow-2xl lg:hover:scale-105 transition-transform max-sm:mx-[5%] '>
-                        <img src={car} className='object-cover' alt="" />
-                        <div className='text-2xl border-[1px] border-wefront text-wefront text-center p-2'>Paper Clay</div>
+                <div className='sm:flex sm:flex-col md:grid md:grid-cols-2 md:gap-3 lg:gap-5 lg:grid-cols-2 lg:grid-rows-1 overflow-clip  '>
+                    <div className='mb-3 max-sm:active:scale-105 active:shadow-weshadow h-fit transition-transform max-sm:mx-[5%] border-2  border-black '>
+                        <img src={gallar1} className='object-cover max-sm:h-[50vh] lg:h- lg:hover:scale-95 w-full' alt="" />
+                        <div className='text-2xl border-[1px] border-wefront text-wefront text-center p-2'>Paper Clay Idol</div>
                     </div>
-                    <div className='mb-3 max-sm:active:scale-105 active:shadow-2xl lg:hover:scale-105 transition-transform max-sm:mx-[5%] '>
-                        <img src={car} className='object-cover' alt="" />
-                        <div className='text-2xl border-[1px] border-wefront text-wefront text-center p-2'>Shadu Soil Clay</div>
+                    <div className='mb-3 max-sm:active:scale-105 active:shadow-weshadow h-fit transition-transform max-sm:mx-[5%] border-2 border-black '>
+                        <img src={gallar2} className='object-cover max-sm:h-[50vh] lg:h-[10%] lg:hover:scale-95 w-full' alt="" />
+                        <div className='text-2xl border-[1px]  border-wefront text-wefront text-center p-2'>Shadu Soil Idol</div>
                     </div>
                 </div>
 
