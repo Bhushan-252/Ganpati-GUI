@@ -8,11 +8,11 @@ function ResultCard (props) {
   const [temps, setTemps] = useState(true)
   const navigate = useNavigate()
   function ProductPage () {
-    navigate(`/shop/Product?id=${props.id}`)
+    navigate(`/shop/Product`)
   }
   return (
     <>
-      <div className='bg-white border-1 border-wefront p-2 mx-[2%] my-2 '>
+      <div className='bg-white border-1 border-wefront p-2 mx-[2%] my-2 overflow-hidden '>
         <div className='h-[20vh] relative px-1'>
           <img src={temp} className='h-[100%] w-full object-cover' alt='' />
           {temps ? (
@@ -37,11 +37,11 @@ function ResultCard (props) {
             <p className='text-xs text-[#777] '> 12 Inch</p>
             <p className='text-xl font-semibold'>DagduSheth </p>
           </div>
-          <div className='px-1 flex text-center justify-center items-center '>
-            <p className='font-semibold text-xl m-2 p-2 text-wefront'>
+          <div className='px-1 flex text-center justify-center items-center  '>
+            <p className='font-semibold text-xl m-2 p-2 text-wefront text-nowrap'>
               ₹ 1290.00
             </p>
-            <p className='text-wrap text-[#999] text-xs'>+ Delivery Charges</p>
+            <p className=' text-[#999] text-xs font-light text-wrap'>+ Delivery Charges</p>
           </div>
         </div>
       </div>

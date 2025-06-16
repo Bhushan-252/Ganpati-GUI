@@ -14,6 +14,9 @@ function Header() {
     navigate("/whislist")
   }
 
+  function loadCartList(){
+    navigate("/Cart")
+  }
   return (
     <>
       <header className="h-fit sticky top-0 bg-white z-5 mt-0 m-0">
@@ -26,7 +29,7 @@ function Header() {
               <FontAwesomeIcon className="self-center text-2xl md:text-3xl text-wefront" icon={faHeart}  />
             </div>
 
-            <div className="flex flex-row-reverse m-1">
+            <div className="flex flex-row-reverse m-1" onClick={()=>loadCartList()}>
               <p className="self-start text-weback text-[1rem] sm:text-xl md:text-2xl">{cartItems > 0 ? cartItems : ''}</p>
               <FontAwesomeIcon className="self-center text-2xl md:text-3xl text-wefront" icon={faCartShopping} />
             </div>

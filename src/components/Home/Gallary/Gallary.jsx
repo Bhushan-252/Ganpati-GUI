@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import gallar from '../../../assets/1 (2).jpeg'
-import gallar1 from '../../../assets/1 (3).jpeg'
-import gallar2 from '../../../assets/1 (4).jpeg'
-import gallar3 from '../../../assets/1 (5).jpeg'
-import gallar4 from '../../../assets/1 (6).jpeg'
-import gallar5 from '../../../assets/1 (7).jpeg'
+import gallar from '../../../assets/image_1.jpeg'
+import gallar1 from '../../../assets/image_2.jpeg'
+import gallar2 from '../../../assets/image_3.jpeg'
+import gallar3 from '../../../assets/image_4.jpeg'
+import gallar4 from '../../../assets/image_5.jpeg'
+import gallar5 from '../../../assets/image_6.jpeg'
 export class Gallary extends Component {
     render() {
         return (

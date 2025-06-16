@@ -5,8 +5,8 @@ import {faLocationDot, faEnvelope,faPhoneVolume} from '@fortawesome/free-solid-s
 export default function Footer() {
   return (
     <>
-      <div>
-        <div className='flex text-[1rem] bg-weback  text-white p-2 '> 
+      <footer className=' bottom-0 m-0 p-0'>
+        <div className='flex text-[1rem] bg-weback text-white p-2 '> 
           <div className='flex-1/3'>
             <h3 className='text-xl font-bold'>Products</h3>
             <ul className='list-disc mx-2'>
@@ -26,10 +26,10 @@ export default function Footer() {
             </ul>
           </div>
         </div>
-        <div className='bg-[rgb(56,65,102)] text-[rgb(180,183,198)] text-center '>
+        <div className='bg-[rgb(56,65,102)] text-[rgb(180,183,198)] text-center m-0 p-0 '>
           <p className='p-3'>Copyright © 2025 MazaMoraya</p>
         </div>
-      </div>
+      </footer>
     </>
   )
 }

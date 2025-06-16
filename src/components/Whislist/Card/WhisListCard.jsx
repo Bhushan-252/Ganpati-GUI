@@ -16,7 +16,7 @@ function WhisListCard() {
                             <p className='font-bold text-xl ml-2'> ₹ 129999 /-</p>
                             <div className='flex items-center text-xl justify-between'>
                                 <p className='border-1 border-wefront text-wefront rounded-2xl w-fit px-4 py-1 text-center my-2 max-sm:active:bg-wefront max-sm:active:text-white transition'>Move To Cart</p>
-                                <FontAwesomeIcon icon={faTrashAlt} className='text-3xl text-wefront m-4 max-sm:active:scale-75' />
+                                <FontAwesomeIcon icon={faTrashAlt} className='text-3xl text-red-600 m-4 max-sm:active:scale-75' />
                             </div>
                         </div>
 

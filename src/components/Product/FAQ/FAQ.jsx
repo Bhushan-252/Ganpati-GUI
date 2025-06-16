@@ -4,7 +4,7 @@ function FAQ() {
   return (
     <>
     <div className='mx-2 p-2 '>
-        <p className='text-[1.3rem] font-sans font-semibold border-b-2 border-black pb-2 w-fit'>
+        <p className='text-[#555] text-[1.3rem] font-sans font-semibold border-b-1 border-gray-400 pb-1 w-fit'>
             How many type of idol you have ?
         </p>
         <p className='text-justify  my-2'>

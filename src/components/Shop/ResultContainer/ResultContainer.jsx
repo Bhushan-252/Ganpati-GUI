@@ -19,7 +19,7 @@ function ResultContainer () {
       <div className='relative my-0.5 bg-[#f6f2f2]'>
         <div
           className={
-            'flex justify-between flex-col items-center  overflow-hidden  transition-transform h-[91vh] w-full bg-white fixed top-[7%] z-10 ' +
+            'flex justify-between flex-col items-center  overflow-hidden  transition-transform h-[100dvh] w-full bg-white fixed top-0 z-10 ' +
             classname
           }
         >
