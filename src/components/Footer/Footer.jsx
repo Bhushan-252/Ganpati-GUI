@@ -1,6 +1,8 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faLocationDot, faEnvelope,faPhoneVolume} from '@fortawesome/free-solid-svg-icons' 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faLocationDot, faEnvelope,faPhoneVolume} from '@fortawesome/free-solid-svg-icons' 
 
 export default function Footer() {
   return (
@@ -12,7 +14,6 @@ export default function Footer() {
             <ul className='list-disc mx-2'>
               <li className='py-1'>Paper Clay</li>
               <li className='py-1'>Shadu Soil Clay</li>
-              {/* <li className='p-1'>Red Soil Clay</li> */}
             </ul>
           </div>
           <div className=''>
