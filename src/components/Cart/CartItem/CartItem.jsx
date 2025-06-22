@@ -2,7 +2,10 @@ import React from 'react'
 import temp from '../../../assets/Carsol_Logo.jpg'
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-function CartItem () {
+import { decreaseItemQuantity, removeCart,increaseItemQuantity } from '../../../features/Cart/cartSlice';
+import { useDispatch } from 'react-redux'
+function CartItem ({item}) {
+  const dispatch = useDispatch();
   return (
     <>
       <div className='bg-[#E4E6EA] my-2'>
@@ -13,20 +16,21 @@ function CartItem () {
             alt=''
             loading='lazy'
           />
-          <div className='my-3 flex flex-col text-black'>
+          <div className='my-3 flex flex-col text-black  w-full'>
             <h3 className=' text-xl'>
-              12 Inch, vighanraj Eco-friendly Ganesha Idol in padmasana Pose
+              {item.name}
+              {/* {console.log(item.price)} */}
             </h3>
-            <p className='text-sm'>Paper Clay</p>
-            <div className='mt-4'>
-              <div className='flex items-center justify-between'>
-                <p className='font-bold text-xl ml-2'> ₹ 12999 /-</p>{' '}
+            <p className='text-sm'>{item.type}</p>
+            <div className='mt-4 w-full'>
+              <div className='flex items-center justify-between w-full '>
+                <p className='font-bold text-xl ml-2'> ₹ {item.price} /-</p>
                 <div className='flex'>
-                  <div className='m-2 text-xl rounded-4xl bg-wefront text-center px-3'>
+                  <div className='m-2 text-xl rounded-4xl bg-wefront text-center px-3' onClick={()=>dispatch(decreaseItemQuantity(item.id))}>
                     -
                   </div>
-                  <div className='m-2 text-xl'>1</div>
-                  <div className='m-2 text-xl rounded-4xl bg-wefront px-2'>
+                  <div className='m-2 text-xl'>{item.quantity}</div>
+                  <div className='m-2 text-xl rounded-4xl bg-wefront px-2' onClick={()=>dispatch(increaseItemQuantity(item.id))}>
                     +
                   </div>
                 </div>
@@ -38,6 +42,7 @@ function CartItem () {
                 <FontAwesomeIcon
                   icon={faTrashAlt}
                   className='text-2xl text-red-600 m-4 max-sm:active:scale-75'
+                  onClick={()=>dispatch(removeCart(item.id))}
                 />
               </div>
             </div>

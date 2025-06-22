@@ -1,24 +1,21 @@
 import React, { useState } from 'react'
 import Carsoul from '../Home/Carsoul/Carsoul'
-import Result from './ResultText/result'
 import Paging from './Paging/Paging'
 import ResultContainer from './ResultContainer/ResultContainer'
-import { Outlet, useLocation } from 'react-router'
+import ScrollToTop from '../utility/ScrollToTop'
 export default function Shop () {
 
   return (
     <>
+    <ScrollToTop/>
       {
-       
         <div className=' mt-2'>
           <div className=''>
             <Carsoul />
           </div>
-          {/* {temp ? <Result /> : ''} */}
           <ResultContainer />
           <Paging />
         </div> 
-   
       }
 
     </>

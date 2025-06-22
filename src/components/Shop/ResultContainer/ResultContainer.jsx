@@ -33,15 +33,16 @@ function ResultContainer () {
             />
           </div>
           <div className='self-center ml-[19%] p-2 '>
-            <h3 className='text-xl font-semibold border-b-2 w-[50%]'>Sizes</h3>
-            {Inches.map((values, index) => (
-              <FilterCheckbox value={values} mes='Inch' key={index} />
-            ))}
             <h3 className='text-xl font-semibold border-b-2 pb-1 w-[50%]'>
               Catogory
             </h3>
             <FilterCheckbox value='Shadu Soil Idol' />
             <FilterCheckbox value='Paper Clay Idol' />
+            <h3 className='text-xl font-semibold border-b-2 w-[50%]'>Sizes</h3>
+            {Inches.map((values, index) => (
+              <FilterCheckbox value={values} mes='Inch' key={index} />
+            ))}
+            
           </div>
           {/* <div className='self-center ml-[19%] p-2'>
             <h3 className='text-xl font-semibold border-b-2 w-full'>

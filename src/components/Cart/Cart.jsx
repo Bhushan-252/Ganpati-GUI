@@ -1,10 +1,13 @@
-import { faCartPlus, faCartShopping } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
+import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import CartItem from './CartItem/CartItem'
 import Checkout from './Checkout/Checkout'
+import { useSelector } from 'react-redux'
 
 function Cart () {
+  const cart = useSelector(state => state.cart);
+  // const dispatch = useDispatch();
   return (
     <>
       <div className='text-white m-2 bg-[#ffffff]'>
@@ -12,22 +15,21 @@ function Cart () {
           <FontAwesomeIcon icon={faCartShopping} className='text-2xl px-1' />
           <h3 className='px-2'>MY CART</h3>
         </div>
-        <CartItem />
-        <CartItem />
+        {console.log(cart)}
+        {cart.items.map((item)=> <CartItem key={item.id} item={item} />)}
         <div className='flex justify-end py-2 my-2'>
           <div className='bg-[#E4E6EA] flex flex-row font-semibold text-sm py-2 text-black'>
             <div className='flex flex-col items-end p-2 my-2'>
-              <p>SUBTOTAL (3 ITEMS) :</p>
+              <p>SUBTOTAL ({cart.totalQuantity} ITEMS) :</p>
               <p>TOTAL :</p>
             </div>
             <div className='justify-around flex flex-col p-2 my-2'>
-              <p>₹ 3000.00</p>
-              <p>₹ 3000.00</p>
+              <p>₹ {cart.totalPrice}</p>
+              <p>₹ {cart.totalPrice}</p>
             </div>
           </div>
         </div>
-
-        <Checkout/>
+        <Checkout />
       </div>
     </>
   )
