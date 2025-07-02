@@ -11,8 +11,10 @@ import Product from './components/Product/Product.jsx'
 import Discription from './components/Product/Discription/Discription.jsx'
 import FAQ from './components/Product/FAQ/FAQ.jsx'
 import Cart from './components/Cart/Cart.jsx'
-import {Provider} from 'react-redux'
-import {store} from './app/store.js'
+import { Provider } from 'react-redux'
+import store from './app/store.js'
+import AdminPanel from './components/AdminPanel/AdminPanel.jsx'
+import Login from './components/AdminPanel/login.jsx'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -43,7 +45,7 @@ const router = createBrowserRouter([
         element: <Cart />
       },
       {
-        path: 'shop/Product',
+        path: 'shop/Product/:productID',
         element: <Product />,
         children: [
           {
@@ -56,13 +58,22 @@ const router = createBrowserRouter([
           }
         ]
       }
+
     ]
+  },
+  {
+    path: 'AdminPanel',
+    element: <AdminPanel />,
+  },
+  {
+    path:'login',
+    element:<Login/>
   }
 ])
 createRoot(document.getElementById('root')).render(
   // <StrictMode>
-    <Provider store={store}>
-      <RouterProvider router={router} />
-    </Provider>
+  <Provider store={store}>
+    <RouterProvider router={router} />
+  </Provider>
   // </StrictMode>
 )

@@ -5,14 +5,22 @@ import { faClose, faSliders, faSort } from '@fortawesome/free-solid-svg-icons'
 import ResultCard from '../ResultCard/ResultCard'
 import { faFileAlt } from '@fortawesome/free-regular-svg-icons'
 import FilterCheckbox from './FilterCheckbox/FilterCheckbox'
+import { useGetAdminQuery, useGetProductsQuery } from '../../../services/products/products'
 
 
-function ResultContainer () {
-  const temp = [1, 2, 3, 4, 4, 5]
+function ResultContainer() {
   const Inches = [8, 10, 12, 18, 24]
+  const [sort,setSort] = useState("price,asc");
   const [filterOn, setFilterOn] = useState(false)
   const classname = `${filterOn ? 'translate-x-[-30%]' : 'translate-x-[-100%]'}`
- 
+  const { data, error, isLoading } = useGetProductsQuery({page:0,sort:sort})
+  const {Adata,errors,isLoadingA} = useGetAdminQuery()
+
+  if (isLoading) return <div>Loading...</div>;
+
+  function handleChange(e) {
+    setSort(e.target.value)
+  }
 
   return (
     <>
@@ -42,16 +50,8 @@ function ResultContainer () {
             {Inches.map((values, index) => (
               <FilterCheckbox value={values} mes='Inch' key={index} />
             ))}
-            
-          </div>
-          {/* <div className='self-center ml-[19%] p-2'>
-            <h3 className='text-xl font-semibold border-b-2 w-full'>
-              Catogory
-            </h3>
-            <FilterCheckbox value='Shadu Soil Idol' />
-            <FilterCheckbox value='Paper Clay Idol' />
-          </div> */}
 
+          </div>
           <button
             name='apply'
             onClick={() => setFilterOn(false)}
@@ -65,6 +65,7 @@ function ResultContainer () {
 
         <div className='flex justify-center '>
           <span className='flex-grow h-1 w-full ml-10 self-center rounded-2xl bg-weback'></span>
+          {/* {data ? data.content : "no data"} */}
           <h3 className=' text-weback text-center self-center text-2xl font-semibold p-3'>
             PRODUCT <span className='text-wefront '>LIST</span>
           </h3>
@@ -82,53 +83,22 @@ function ResultContainer () {
           <select
             name=''
             id=''
-            className='px-4 py-2 border-2 border-wefront font-semibold m-2 self-end '
+            className='px-4 py-2 border-2 border-wefront font-semibold m-2 self-end outline-0'
+            onChange={(e) => handleChange(e)}
           >
-            <option value='1'>Low to High</option>
+            <option value='price,asc'>Low to High</option>
             <option value='2'>Relavance</option>
-            <option value='3'>High to Low</option>
-            <option value='4'>Popular</option>
+            <option value='price,desc'>High to Low</option>
+            {/* <option value='4'>Popular</option> */}
           </select>
         </div>
-        {/* <div className='text-wefront'>
-          <div className='text-center text-2xl font-semibold text-wefront'>
-            Idol Sizes
-          </div>
-          <div className='flex justify-evenly'>
-            <label className='flex' htmlFor=''>
-              <input
-                type='checkbox'
-                value={4}
-              />
-              <p className='mx-2'>04 Inch</p>
-            </label>
-            <label className='flex' htmlFor=''>
-              <input type='checkbox' value={6} />
-              <p className='mx-2'>06 Inch</p>
-            </label>
-            <label className='flex' htmlFor=''>
-              <input type='checkbox' value={8} />
-              <p className='mx-2'>08 Inch</p>
-            </label>
-          </div>
-          <div className='flex justify-evenly'>
-            <label className='flex' htmlFor=''>
-              <input type='checkbox' value={10} />
-              <p className='mx-2'>10 Inch</p>
-            </label>
-            <label className='flex' htmlFor=''>
-              <input type='checkbox' value={12} />
-              <p className='mx-2'>12 Inch</p>
-            </label>
-            <label className='flex' htmlFor=''>
-              <input type='checkbox' value={14} />
-              <p className='mx-2'>14 Inch</p>
-            </label>
-          </div>
-        </div> */}
         <div className='grid gap-2 max-sm:grid-cols-2 max-lg:grid-cols-2'>
-          {temp.map((value, index) => (
+          {/* {temp.map((value, index) => (
             <ResultCard key={index} id={value}/>
+          ))} */}
+
+          {data?.content?.map((product) => (
+            <ResultCard key={product.id} data={product} />
           ))}
         </div>
         {/* <div className='w-[100%] text-white flex justify-around text-3xl py-3 sticky bg-weback bottom-0'>

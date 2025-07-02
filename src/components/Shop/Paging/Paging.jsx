@@ -21,7 +21,7 @@ function Paging () {
         </span>
         <div className=' active:scale-75 px-3 py-1 border-1 border-white text-2xl bg-wefront text-white'>
           next{' '}
-        </div>
+        </div> 
       </div>
     </>
   )

@@ -4,17 +4,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-regular-svg-icons'
 import { useNavigate } from 'react-router'
 import { faHeart as fa } from '@fortawesome/free-solid-svg-icons'
-function ResultCard (props) {
+function ResultCard ({data}) {
   const [temps, setTemps] = useState(true)
   const navigate = useNavigate()
   function ProductPage () {
-    navigate(`/shop/Product`)
+    navigate(`/shop/Product/${data.id}`)
   }
   return (
     <>
       <div className='bg-white border-1 border-wefront p-2 mx-[2%] my-2 overflow-hidden '>
+        {console.log(data)}
         <div className='h-[20vh] relative px-1'>
-          <img src={temp} className='h-[100%] w-full object-cover' alt='' />
+          <img src={`http://localhost:8080${data.productImages[0]}`} className='h-[100%] w-full object-cover' alt='' />
           {temps ? (
             <FontAwesomeIcon
               icon={faHeart}
@@ -34,12 +35,12 @@ function ResultCard (props) {
           onClick={() => ProductPage()}
         >
           <div className='text-center'>
-            <p className='text-xs text-[#777] '> 12 Inch</p>
-            <p className='text-xl font-semibold'>DagduSheth </p>
+            <p className='text-xs text-[#777] '> {data.size} Inch</p>
+            <p className='text-xl font-semibold'>{data.title} </p>
           </div>
           <div className='px-1 flex text-center justify-center items-center  '>
             <p className='font-semibold text-xl m-2 p-2 text-wefront text-nowrap'>
-              ₹ 1290.00
+              ₹ {data.price}.00
             </p>
             <p className=' text-[#999] text-xs font-light text-wrap'>+ Delivery Charges</p>
           </div>

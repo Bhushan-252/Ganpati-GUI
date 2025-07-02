@@ -5,8 +5,10 @@ import gallar3 from '../../assets/image_3.jpeg'
 import gallar4 from '../../assets/image_4.jpeg'
 import Title from './Title'
 import Purchase from './Purchase/Purchase'
-import { Link, Outlet } from 'react-router'
+import { Link, Outlet, useParams } from 'react-router'
 function Product () {
+
+
   
   const [tem,setTem] = useState(temp);
   function changeImage(pastem){
@@ -22,8 +24,8 @@ function Product () {
       }else{
         count = 0;
       }
-    },2000)
-    // clearInterval(ab);
+    },1000)
+
   }
 
   return (

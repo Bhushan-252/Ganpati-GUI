@@ -13,7 +13,6 @@ function App() {
 
  return(
     <div className="min-h-[100dvh] grid grid-rows-[auto_1fr_auto]">
-      
     <Header/>
     <Outlet/>
     <Footer/>
