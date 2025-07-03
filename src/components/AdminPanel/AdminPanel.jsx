@@ -1,159 +1,85 @@
-import React, { useState } from 'react'
-import { useAddPostMutation } from '../../services/products/products';
-import { useNavigate } from 'react-router';
+import React, { useState, useEffect, useRef } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 function AdminPanel() {
-    const navigate  = useNavigate();
-    const [temp, setTemp] = useState([]);
-    const [addPost, { data, isLoading, isSuccess, error }] = useAddPostMutation()
+  const [isOpen, setIsOpen] = useState(false);
+  const sidebarRef = useRef(null);
 
-    async function handleForm(fromData) {
-        let obj = {};
-        const formDataTemp = new FormData();
-        fromData.forEach((value, key) => {
-            if (key != "images")
-                obj[key] = value;
-        });
-        formDataTemp.append("product", new Blob([JSON.stringify(obj)], { type: 'application/json' }));
-        let files = fromData.getAll("images");
-        files.forEach(file => {
-            formDataTemp.append("images", file);
-        });
-        await addPost(formDataTemp);
-        temp.map((i) => window.URL.revokeObjectURL(i))
-        setTemp([])
-    }
-    async function handleImages(data) {
-        var temps = [];
-        var file = data.target.files;
-        for (var f of file) {
-            temps.push(window.URL.createObjectURL(f))
-        }
-        setTemp(temps);
-    }
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        sidebarRef.current &&
+        !sidebarRef.current.contains(event.target) &&
+        window.innerWidth < 768
+      ) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
-    return (
-        <>
-            <div className="max-w-2xl mx-auto bg-white p-8 rounded shadow-md animate-fadeSlide">
-                <h2 className="text-2xl font-semibold mb-6 text-center animate-popIn">
-                    Add New Product
-                </h2>
+  const Sidebar = () => (
+    <div
+      ref={sidebarRef}
+      className={`fixed z-40 rounded-lg md:rounded-none
+        md:static md:translate-x-0 top-0 left-0 h-full w-64 bg-white shadow-md transition-transform duration-300 ease-in-out transform ${
+        isOpen ? 'translate-x-0' : '-translate-x-full'
+      } md:block`}
+    >
+      <div className="flex items-center justify-between p-4 border-b md:justify-center md:pt-4">
+        <span className="font-bold text-xl">Logo</span>
+        {/* Close icon shown only on mobile */}
+        <button
+          onClick={() => setIsOpen(false)}
+          className="md:hidden text-gray-600 hover:text-black"
+        >
+          <FontAwesomeIcon icon={faTimes} size="lg" />
+        </button>
+      </div>
 
-                <form action={handleForm} className="space-y-6">
-                    {/* Title */}
-                    <div className="transition-transform duration-300 hover:scale-[1.01]">
-                        <label className="block text-gray-700 mb-1">Title</label>
-                        <input
-                            type="text"
-                            name="title"
-                            required
-                            className="w-full border border-gray-300 rounded px-4 py-2 focus:ring-2 focus:ring-blue-400 transition-all"
-                        />
-                    </div>
+      <nav className="p-4">
+        <ul className="space-y-4">
+          <li><a href="/AddProducts" className="block text-gray-700 hover:text-blue-600">Manage Products</a></li>
+          <li><a href="#" className="block text-gray-700 hover:text-blue-600">Orders</a></li>
+          <li><a href="#" className="block text-gray-700 hover:text-blue-600">Manage User</a></li>
+          <li><a href="#" className="block text-gray-700 hover:text-blue-600">Logout</a></li>
+        </ul>
+      </nav>
+    </div>
+  );
 
-                    {/* Price */}
-                    <div className="transition-transform duration-300 hover:scale-[1.01]">
-                        <label className="block text-gray-700 mb-1">Price</label>
-                        <input
-                            type="number"
-                            name="price"
-                            step="0.01"
-                            required
-                            className="w-full border border-gray-300 rounded px-4 py-2 focus:ring-2 focus:ring-blue-400 transition-all"
-                        />
-                    </div>
+  return (
+    <div className="flex h-screen">
+      {/* Sidebar */}
+      <Sidebar />
 
-                    {/* Images Upload */}
-                    <div className="transition-transform duration-300 hover:scale-[1.01]">
-                        <label className="block text-gray-700 mb-1">Upload Images</label>
-                        <input
-                            type="file"
-                            name="images"
-                            multiple
-                            accept="image/*"
-                            className="w-full border border-gray-300 rounded px-4 py-2"
-                            onChange={handleImages}
-                        />
+      {/* Dark overlay for mobile */}
+      {isOpen && (
+        <div
+          className="fixed inset-0 bg-black opacity-50 z-30 md:hidden"
+          onClick={() => setIsOpen(false)}
+        />
+      )}
 
-                        {temp ?
-                            temp.map((t, i) => {
-                                return (
-                                    <img src={t} alt="" srcSet="" key={i} />
-                                );
-                            }) : null
-                        }
+      {/* Hamburger menu button */}
+      {!isOpen && (
+        <button
+          className="md:hidden fixed top-4 left-4 z-50 p-2 bg-blue-600 text-white rounded"
+          onClick={() => setIsOpen(true)}
+        >
+          <FontAwesomeIcon icon={faBars} size="lg" />
+        </button>
+      )}
 
-                    </div>
-
-                    {/* Size */}
-                    <div className="transition-transform duration-300 hover:scale-[1.01]">
-                        <label className="block text-gray-700 mb-1">Size (in inches)</label>
-                        <select
-                            name="size"
-                            required
-                            className="w-full border border-gray-300 rounded px-4 py-2 focus:ring-2 focus:ring-blue-400 transition-all"
-                        >
-                            <option value="">Select size</option>
-                            {[8,10,12,18,24].map((i) => {
-                                
-                                return (
-                                    <option key={i} value={i}>
-                                        {i}
-                                    </option>
-                                );
-                            })}
-                        </select>
-                    </div>
-
-                    {/* Quantity */}
-                    <div className="transition-transform duration-300 hover:scale-[1.01]">
-                        <label className="block text-gray-700 mb-1">Quantity</label>
-                        <input
-                            type="number"
-                            name="quantity"
-                            min="1"
-                            required
-                            className="w-full border border-gray-300 rounded px-4 py-2 focus:ring-2 focus:ring-blue-400 transition-all"
-                        />
-                    </div>
-
-                    {/* Description */}
-                    <div className="transition-transform duration-300 hover:scale-[1.01]">
-                        <label className="block text-gray-700 mb-1">Description</label>
-                        <textarea
-                            name="description"
-                            rows="4"
-                            className="w-full border border-gray-300 rounded px-4 py-2 focus:ring-2 focus:ring-blue-400 transition-all"
-                        ></textarea>
-                    </div>
-
-                    {/* Category */}
-                    <div className="transition-transform duration-300 hover:scale-[1.01]">
-                        <label className="block text-gray-700 mb-1">Category</label>
-                        <select
-                            name="category"
-                            required
-                            className="w-full border border-gray-300 rounded px-4 py-2 focus:ring-2 focus:ring-blue-400 transition-all"
-                        >
-                            <option value="">Select category</option>
-                            <option value="Shadu Soil Idol">Shadu Soil Idol</option>
-                            <option value="Paper Clay Idol">Paper Clay Idol</option>
-                        </select>
-                    </div>
-
-                    {/* Submit */}
-                    <div className="text-center">
-                        <button
-                            type="submit"
-                            className="bg-blue-600 cursor-pointer hover:bg-blue-700 text-white px-6 py-2 rounded shadow transition-transform transform hover:scale-105 duration-300"
-                        >
-                            {isLoading ? 'Submitting...' : 'Add Product'}
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </>
-    )
+      {/* Main Content */}
+      <div className="flex-1 bg-gray-100 p-6 pt-20 md:pt-6 overflow-auto w-full">
+        <h1 className="text-3xl font-bold mb-4">Main Content</h1>
+        <p>This is the main content area. Resize window to test responsiveness.</p>
+      </div>
+    </div>
+  );
 }
 
-export default AdminPanel
+export default AdminPanel;
