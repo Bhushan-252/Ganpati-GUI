@@ -14,7 +14,11 @@ import Cart from './components/Cart/Cart.jsx'
 import { Provider } from 'react-redux'
 import store from './app/store.js'
 import AdminPanel from './components/AdminPanel/AdminPanel.jsx'
-import Login from './components/AdminPanel/login.jsx'
+import AddProduct from './components/AdminPanel/AddProduct.jsx'
+import Login from './components/AdminPanel/Login.jsx'
+import ManageProduct from './components/AdminPanel/ManageProduct.jsx'
+import ManageUser from './components/AdminPanel/ManageUser.jsx'
+import Orders from './components/AdminPanel/Orders.jsx'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -62,13 +66,31 @@ const router = createBrowserRouter([
     ]
   },
   {
-    path: 'AdminPanel',
+    path: 'adminpanel',
     element: <AdminPanel />,
+    children : [
+      {
+        path: 'addproduct',
+        element: <AddProduct />,
+      },
+      {
+        path:'login',
+        element:<Login/>
+      },
+      {
+        path : 'manageproduct',
+        element : <ManageProduct />
+      },
+      {
+        path : 'manageuser',
+        element : <ManageUser />
+      },
+      {
+        path : 'orders',
+        element : <Orders />
+      }
+    ]
   },
-  {
-    path:'login',
-    element:<Login/>
-  }
 ])
 createRoot(document.getElementById('root')).render(
   // <StrictMode>
