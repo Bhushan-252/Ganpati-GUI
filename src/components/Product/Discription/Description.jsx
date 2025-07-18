@@ -1,11 +1,11 @@
 import React from 'react'
 
-function Discription () {
+function Description ({disc}) {
   return (
     <>
       <div>
      <p className='p-2 m-1 text-justify'>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam autem cum minus optio sint deserunt velit voluptatibus, iure explicabo quas, nemo reprehenderit veritatis nihil id ullam accusamus ducimus error officia.
+         {disc}
      </p>
 
       </div>
@@ -13,4 +13,4 @@ function Discription () {
   )
 }
 
-export default Discription
+export default Description

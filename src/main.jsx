@@ -1,4 +1,4 @@
-import { StrictMode } from 'react'
+import {StrictMode, useState} from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
@@ -8,13 +8,19 @@ import Home from './components/Home/Home.jsx'
 import Shop from './components/Shop/Shop.jsx'
 import Whislist from './components/Whislist/Whislist.jsx'
 import Product from './components/Product/Product.jsx'
-import Discription from './components/Product/Discription/Discription.jsx'
+import Description from './components/Product/Discription/Description.jsx'
 import FAQ from './components/Product/FAQ/FAQ.jsx'
 import Cart from './components/Cart/Cart.jsx'
 import { Provider } from 'react-redux'
 import store from './app/store.js'
 import AdminPanel from './components/AdminPanel/AdminPanel.jsx'
 import Login from './components/AdminPanel/login.jsx'
+
+
+let login = false;
+function handelLoginFlag(setLogin){
+  login = setLogin;
+}
 const router = createBrowserRouter([
   {
     path: '/',
@@ -37,7 +43,7 @@ const router = createBrowserRouter([
         element: <Shop />
       },
       {
-        path: 'whislist',
+        path: 'wishlist',
         element: <Whislist />
       },
       {
@@ -49,8 +55,8 @@ const router = createBrowserRouter([
         element: <Product />,
         children: [
           {
-            path: 'discription',
-            element: <Discription />
+            index:true,
+            element: <Description />
           },
           {
             path: 'FAQ',
@@ -63,17 +69,14 @@ const router = createBrowserRouter([
   },
   {
     path: 'AdminPanel',
-    element: <AdminPanel />,
+    element:<AdminPanel /> ,
   },
-  {
-    path:'login',
-    element:<Login/>
-  }
+
 ])
 createRoot(document.getElementById('root')).render(
-  // <StrictMode>
+  <StrictMode>
   <Provider store={store}>
     <RouterProvider router={router} />
   </Provider>
-  // </StrictMode>
+  </StrictMode>
 )

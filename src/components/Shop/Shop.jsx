@@ -5,6 +5,7 @@ import ResultContainer from './ResultContainer/ResultContainer'
 import ScrollToTop from '../utility/ScrollToTop'
 export default function Shop () {
 
+
   return (
     <>
     <ScrollToTop/>
@@ -14,7 +15,6 @@ export default function Shop () {
             <Carsoul />
           </div>
           <ResultContainer />
-          <Paging />
         </div> 
       }
 

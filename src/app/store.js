@@ -1,6 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
 import cartReducer from '../features/Cart/cartSlice'
 import {productApi} from '../services/products/products'
+import LoginApiReducer, {LoginApi} from "../services/login/login.js";
+import loginReducer from "../features/Login/loginSlice.js";
 
 
 const loadCartState = () => {
@@ -30,13 +32,16 @@ const saveCartState = (state) => {
 const store = configureStore({
     reducer:{
         cart: cartReducer,
+        login: loginReducer,
         [productApi.reducerPath] :productApi.reducer,
+        [LoginApi.reducerPath]:LoginApiReducer,
     },
     preloadedState:{
-        cart:loadCartState()
+        cart:loadCartState(),
+
     },
     middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(productApi.middleware),
+    getDefaultMiddleware().concat(productApi.middleware).concat(LoginApi.middleware),
 });
 
 store.subscribe(()=>{

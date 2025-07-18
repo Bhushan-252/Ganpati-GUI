@@ -13,8 +13,8 @@ const cartSlice = createSlice({
     addCart: (state, action) => {
       if (!state.items.some(item => item.id === action.payload.id)) {
         state.items.push(action.payload)
-        state.totalQuantity++
-        state.totalPrice += action.payload.price
+        state.totalQuantity+= action.payload.quantity
+        state.totalPrice += action.payload.price * action.payload.quantity
 
       }
     },
@@ -42,7 +42,7 @@ const cartSlice = createSlice({
       temp.quantity--
       temp.maxQuantity++
       if (temp.quantity <= 0) {
-        state.items = state.items.filter(item => item.id != temp.id)
+        state.items = state.items.filter(item => item.id !== temp.id)
       }
       state.totalQuantity--
       state.totalPrice -= temp.price

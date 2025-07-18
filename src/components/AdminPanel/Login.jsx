@@ -1,25 +1,29 @@
 import React from 'react'
 import { useState } from 'react'
-import { useLoginMutation } from '../../services/products/products'
+import { useLoginMutation } from '../../services/login/login.js'
+import {useDispatch} from "react-redux";
+import {setLogin} from "../../features/Login/loginSlice.js";
 function Login() {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    const dispatch = useDispatch()
     const [login,{data,error,isLoading}]= useLoginMutation()
-    const handleLogin = async () => {
+    function handleLogin(e)  {
+        e.preventDefault();
         let formData = new FormData();
         formData.append('username',username);
         formData.append('password',password);
-        console.log("Enter the login",formData);
-        await login(formData);
+        login(formData);
+        dispatch(setLogin(true))
     }
-
+      
     return (
         <>
         <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
       <div className="w-full max-w-md bg-white rounded-lg shadow-md p-8">
         <h2 className="text-2xl font-semibold text-center text-gray-800 mb-6">Login</h2>
 
-        <form onSubmit={handleLogin} className="space-y-5">
+        <form onSubmit={e => handleLogin(e)} className="space-y-5">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Username</label>
             <input

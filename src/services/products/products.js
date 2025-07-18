@@ -1,9 +1,10 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
 
 export const productApi = createApi({
     reducerPath: 'productApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: "http://localhost:8080/"
+        baseUrl: "http://localhost:8080/",
+        credentials: "include",
     }),
     tagTypes: ['Product'],
     endpoints: (build) => ({
@@ -17,24 +18,23 @@ export const productApi = createApi({
             }
         }),
         getProducts: build.query({
-            query: ({ page = 0, size = 6, sort = 'price,asc' }) => ({
+            query: ({page = 0, size = 6, sort = 'price,asc'}) => ({
                 url: 'products',
-                params: { page, size, sort },
+                params: {page, size, sort},
             }),
         }),
-        getAdmin: build.query({
-            query: () => 'safe/login/admin'
+        getProduct: build.query({
+            query: (id) => ({
+                url: `products/${id}`,
+            })
         }),
-        login:build.mutation({
-            query(formData){
-                return{
-                    url:'safe/login',
-                    method:'POST',
-                    body:formData
-                }
-            }
+        getProductWithFilter: build.query({
+            query: ({inches, categories, page = 0, size = 6, sort}) => ({
+                url: 'products/filters',
+                params: {inches, categories, page, size, sort},
+            })
         })
     })
 })
 
-export const { useAddPostMutation, useGetProductsQuery, useGetAdminQuery, useLoginMutation } = productApi;
+export const {useAddPostMutation, useGetProductsQuery, useGetProductQuery,useGetProductWithFilterQuery} = productApi;

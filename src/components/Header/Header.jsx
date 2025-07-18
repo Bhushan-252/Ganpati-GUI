@@ -8,12 +8,12 @@ import { useSelector } from "react-redux";
 
 function Header() {
   const [cartItems, setCartItems] = useState(1);
-  const [WhisList, setWhisList] = useState(1);
+  const [WishList, setWishList] = useState(1);
   const cart = useSelector(state => state.cart)
   const navigate  = useNavigate();
 
-  function loadWhishList() {
-    navigate("/whislist")
+  function loadWishList() {
+    navigate("/wishlist")
   }
 
   function loadCartList(){
@@ -26,8 +26,8 @@ function Header() {
           <img src={simg} className="max-sm:h-12 m-0" />
           {/* <img src={trolly} className="self-center max-sm:h-8 h-12 mx-2 p-1" /> */}
           <div className="flex justify-end w-50 mx-2">
-            <div className="flex flex-row-reverse m-1 " onClick={()=>loadWhishList()}>
-              <p className="self-start text-white px-2 mx-1 text-[1rem] rounded-2xl bg-wefront sm:text-xl md:text-2xl">{WhisList > 0 ? WhisList : ''}</p>
+            <div className="flex flex-row-reverse m-1 " onClick={()=>loadWishList()}>
+              <p className="self-start text-white px-2 mx-1 text-[1rem] rounded-2xl bg-wefront sm:text-xl md:text-2xl">{WishList > 0 ? WishList : ''}</p>
               <FontAwesomeIcon className="self-center text-2xl md:text-3xl text-wefront" icon={faHeart}  />
             </div>
 

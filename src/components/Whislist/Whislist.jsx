@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeartCirclePlus } from '@fortawesome/free-solid-svg-icons/faHeartCirclePlus'
 import WhisListCard from './Card/WhisListCard'
-function Whislist () {
+function Wishlist () {
   const [temp,setTemp] = useState([
       {
       id: 3,
@@ -10,21 +10,33 @@ function Whislist () {
       price: 2400,
       type: 'Shadu Soil clay',
       quantity: 1,
-      maxQuantity: 5
+      maxQuantity: 5,
+          productImages:   [
+              "/images/of2Fcd9K-l/of2Fcd9K-l_1.jpeg",
+          "/images/of2Fcd9K-l/of2Fcd9K-l_2.jpeg"
+  ]
     }, {
       id: 4,
       name: 'Mazza Bappa Morya',
       price: 1400,
       type: 'Shadu Soil clay',
       quantity: 1,
-      maxQuantity: 4
+      maxQuantity: 4,
+          productImages:   [
+              "/images/of2Fcd9K-l/of2Fcd9K-l_1.jpeg",
+              "/images/of2Fcd9K-l/of2Fcd9K-l_2.jpeg"
+          ]
     }, {
       id: 6,
       name: 'Mazza Bappa Morya',
       price: 3000,
       type: 'Shadu Soil clay',
       quantity: 1,
-      maxQuantity: 3
+      maxQuantity: 3,
+          productImages:   [
+              "/images/of2Fcd9K-l/of2Fcd9K-l_1.jpeg",
+              "/images/of2Fcd9K-l/of2Fcd9K-l_2.jpeg"
+          ]
     }]);
 
   function handleDelete(id){
@@ -46,4 +58,4 @@ function Whislist () {
   )
 }
 
-export default Whislist
+export default Wishlist
