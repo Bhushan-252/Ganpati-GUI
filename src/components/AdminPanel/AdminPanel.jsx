@@ -1,15 +1,17 @@
 import AddProduct from "./AddProduct.jsx";
 import Login from "./Login.jsx";
 import {useSelector} from "react-redux";
+import DashBoard from "./DashBoard.jsx";
 
 function AdminPanel() {
-    const login = useSelector((state) => state.login);
+    // const login = useSelector((state) => state.login);
+
+
     return(
         <>
-            {console.log("loading Adminpanel")}
-            {console.log(login)}
-            {login.login ? <AddProduct/>  : <Login />}
-        </>
+            <Login/>
+            {/*{login.login ? <DashBoard/>  : <Login />}*/}
+     </>
     )
 }
 

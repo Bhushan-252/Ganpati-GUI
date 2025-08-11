@@ -74,20 +74,19 @@ const AddProduct = () => {
 
                     {/* Images Upload */}
                     <div className="transition-transform duration-300 hover:scale-[1.01]">
-                        <label className="block text-gray-700 mb-1">Upload Images</label>
+
+                        <label className="block mb-2 text-gray-900 "
+                               htmlFor="multiple_files">Upload multiple files</label>
                         <input
-                            type="file"
-                            name="images"
-                            multiple
-                            accept="image/*"
-                            className="w-full border border-gray-300 rounded px-4 py-2"
-                            onChange={handleImages}
-                        />
+                            onClick={handleImages}
+                            className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none  dark:placeholder-gray-400"
+                            id="multiple_files" type="file" multiple/>
+
 
                         {temp ?
                             temp.map((t, i) => {
                                 return (
-                                    <img src={t} alt="" srcSet="" key={i} />
+                                    <img src={t} alt="" srcSet="" key={i}/>
                                 );
                             }) : null
                         }
@@ -154,11 +153,11 @@ const AddProduct = () => {
                     <div className="text-center">
                         <button
                             type="submit"
-                            className="bg-blue-600 cursor-pointer hover:bg-blue-700 text-white px-6 py-2 rounded shadow transition-transform transform hover:scale-105 duration-300"
+                            className="bg-black cursor-pointer hover:bg-blue-700 text-white px-6 py-2 rounded shadow transition-transform transform hover:scale-105 duration-300"
                         >
                             {isLoading ? 'Submitting...' : 'Add Product'}
                         </button>
-                        <button onClick={(e) => handleLogout(e)}>Logout</button>
+                        {/*<button onClick={(e) => handleLogout(e)}>Logout</button>*/}
                     </div>
                 </form>
             </div>

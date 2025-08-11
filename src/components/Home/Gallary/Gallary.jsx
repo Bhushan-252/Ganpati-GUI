@@ -16,25 +16,39 @@ export class Gallary extends Component {
                     <span className='flex-grow h-1 w-[1px] mr-10 self-center rounded-2xl bg-weback'>
                     </span>
                 </div>
-                <div className='grid-cols-3 gap-3 grid-rows-2 grid mx-3 p-2 rounded-xl '>
-                    <div className='overflow-clip col-start-1 '>
-                        <img src={gallar} className='rounded-[5px] h-full w-full active:scale-125 transition-transform object-cover' alt="" />
-                    </div>
-                    <div className='col-span-1 overflow-clip'>
-                        <img src={gallar1} className='rounded-[5px]  w-full  active:scale-125 transition-transform object-cover' alt="" />
-                    </div>
-                    <div className='col-span-1 row-span-1 overflow-clip'>
-                        <img src={gallar2} className='rounded-[5px] h-full w-full  active:scale-125 transition-transform object-cover' alt="" />
-                    </div>
+                <div className="grid grid-cols-2 max-sm:grid-cols-1 md:grid-cols-3 gap-2 m-2">
+                    <div className="grid max-sm:grid-cols-2 gap-4 ">
+                        <div>
+                            <img className="h-full max-w-full rounded-lg"
+                                 src={gallar} alt=""/>
+                        </div>
+                        <div>
+                            <img className="h-full max-w-full rounded-lg"
+                                 src={gallar1} alt=""/>
+                        </div>
 
-                    <div className='row-span-1 overflow-clip'>
-                        <img src={gallar3} className='rounded-[5px] h-full w-full  active:scale-125 transition-transform object-cover' alt="" />
                     </div>
-                    <div className='col-span-1 overflow-clip'>
-                        <img src={gallar4} className='rounded-[5px] h-full w-full  active:scale-125 transition-transform object-cover' alt="" />
+                    <div className="grid max-sm:grid-cols-2 gap-4">
+                        <div>
+                            <img className="h-full max-w-full rounded-lg"
+                                 src={gallar2} alt=""/>
+                        </div>
+                        <div>
+                            <img className="h-full max-w-full rounded-lg"
+                                 src={gallar3} alt=""/>
+                        </div>
+
                     </div>
-                     <div className='col-span-1 overflow-clip'>
-                        <img src={gallar5} className='rounded-[5px] h-full w-full  active:scale-125 transition-transform object-cover' alt="" />
+                    <div className="grid max-sm:grid-cols-2 gap-4">
+                        <div>
+                            <img className="h-full max-w-full rounded-lg"
+                                 src={gallar4} alt=""/>
+                        </div>
+                        <div>
+                            <img className="h-full max-w-full rounded-lg"
+                                 src={gallar5} alt=""/>
+                        </div>
+
                     </div>
                 </div>
             </>

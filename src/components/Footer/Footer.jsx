@@ -9,7 +9,7 @@ export default function Footer() {
         <div className='flex text-[1rem] bg-weback text-white p-2 '> 
           <div className='flex-1/3'>
             <h3 className='text-xl font-bold'>Products</h3>
-            <ul className='list-disc mx-2'>
+            <ul className='list-disc mx-4'>
               <li className='py-1'>Paper Clay</li>
               <li className='py-1'>Shadu Soil Clay</li>
             </ul>

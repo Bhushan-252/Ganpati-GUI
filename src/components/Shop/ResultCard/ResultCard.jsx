@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import temp from '../../../assets/Carsol_Logo.jpg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-regular-svg-icons'
 import { useNavigate } from 'react-router'
@@ -13,7 +12,7 @@ function ResultCard ({data}) {
   return (
     <>
       <div className='bg-white border-1 border-wefront p-2 mx-[2%] my-2 overflow-hidden '>
-        <div className='h-[20dvh] lg:h-[50dvh] relative px-1'>
+        <div className='h-[20dvh] lg:h-[30dvh] relative px-1'>
           <img src={`http://localhost:8080${data.productImages[0]}`} className='h-[100%] w-full object-cover' alt=''  onClick={() => ProductPage() }/>
           {temps ? (
             <FontAwesomeIcon

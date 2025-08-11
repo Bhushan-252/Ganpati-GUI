@@ -1,6 +1,4 @@
-import React, { useState } from 'react'
-import Carsoul from '../Home/Carsoul/Carsoul'
-import Paging from './Paging/Paging'
+import React from 'react'
 import ResultContainer from './ResultContainer/ResultContainer'
 import ScrollToTop from '../utility/ScrollToTop'
 export default function Shop () {
@@ -10,10 +8,8 @@ export default function Shop () {
     <>
     <ScrollToTop/>
       {
-        <div className=' mt-2'>
-          <div className=''>
-            <Carsoul />
-          </div>
+        <div className=' mt-2' >
+            {/*<Carousel />*/}
           <ResultContainer />
         </div> 
       }

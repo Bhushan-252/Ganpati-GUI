@@ -14,7 +14,7 @@ function Cart () {
           <FontAwesomeIcon icon={faCartShopping} className='text-2xl px-1' />
           <h3 className='px-2'>MY CART</h3>
         </div>
-        {cart.items && cart.items.map((item)=> <CartItem key={item.id} item={item} />)}
+        {cart?.items && cart?.items.map((item)=> <CartItem key={item.id} item={item} />)}
         <div className='flex justify-end py-2 my-2'>
           <div className='bg-[#E4E6EA] flex flex-row font-semibold text-sm py-2 text-black'>
             <div className='flex flex-col items-end p-2 my-2'>

@@ -6,9 +6,6 @@ export const LoginApi = createApi({
     baseQuery:fetchBaseQuery({
         baseUrl :"http://localhost:8080/safe",
         credentials: "include",
-        // prepareHeaders:(headers) => {
-        //
-        // }
     }),
     endpoints:(build) =>({
             login :build.mutation({
@@ -22,7 +19,7 @@ export const LoginApi = createApi({
             }),
             logout:build.mutation({
                 query: () =>({
-                    url:'/login/logout',
+                    url:'/logout',
                     method :'POST',
                 }),
             })

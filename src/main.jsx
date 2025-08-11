@@ -15,6 +15,7 @@ import { Provider } from 'react-redux'
 import store from './app/store.js'
 import AdminPanel from './components/AdminPanel/AdminPanel.jsx'
 import Login from './components/AdminPanel/login.jsx'
+import AddProduct from "./components/AdminPanel/AddProduct.jsx";
 
 
 let login = false;
@@ -70,6 +71,13 @@ const router = createBrowserRouter([
   {
     path: 'AdminPanel',
     element:<AdminPanel /> ,
+    children:[{
+      path: 'addProduct',
+      element: <AddProduct />,
+    },{
+      path: 'Orders',
+      // element: <Orders/>
+    }]
   },
 
 ])

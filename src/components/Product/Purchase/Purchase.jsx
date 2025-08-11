@@ -1,8 +1,8 @@
 import React from 'react'
-
-
-
+import {useDispatch} from "react-redux";
 function Purchase({handlePurchase}) {
+
+
     function handleAddToCart() {
         handlePurchase();
     }
