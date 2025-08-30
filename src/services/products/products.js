@@ -33,8 +33,26 @@ export const productApi = createApi({
                 url: 'products/filters',
                 params: {inches, categories, page, size, sort},
             })
+        }),
+        editProduct:build.mutation({
+            query(formData){
+                return{
+                    url:'products',
+                    method:'PUT',
+                    body:formData
+                }
+            }
+        }),
+        deleteProduct:build.mutation({
+            query(id){
+                return {
+                    url:`products/delete/${id}`,
+                    method:'DELETE',
+                    
+                }
+            }
         })
     })
 })
 
-export const {useAddPostMutation, useGetProductsQuery, useGetProductQuery,useGetProductWithFilterQuery} = productApi;
+export const {useAddPostMutation, useGetProductsQuery, useGetProductQuery,useGetProductWithFilterQuery, useDeleteProductMutation} = productApi;

@@ -80,7 +80,7 @@ const AddProduct = () => {
                         <input
                             onClick={handleImages}
                             className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none  dark:placeholder-gray-400"
-                            id="multiple_files" type="file" multiple/>
+                            id="multiple_files" type="file" name='images' multiple accept="image/jpeg,image/png"  />
 
 
                         {temp ?

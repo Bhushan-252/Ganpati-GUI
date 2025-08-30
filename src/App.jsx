@@ -14,7 +14,7 @@ function App() {
 
     return (
         <ErrorBoundary fallback={<div>Loading...</div>}>
-            <div className="min-h-[100dvh] grid grid-rows-[auto_1fr_auto]">
+            <div className="min-h-[100dvh] grid grid-rows-[auto_1fr_auto] ">
                 <Header/>
                 <Outlet/>
                 <Footer/>

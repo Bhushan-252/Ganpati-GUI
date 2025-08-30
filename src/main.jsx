@@ -1,90 +1,60 @@
-import {StrictMode, useState} from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
-import Footer from './components/Footer/Footer'
-import { createBrowserRouter, RouterProvider } from 'react-router'
-import Home from './components/Home/Home.jsx'
-import Shop from './components/Shop/Shop.jsx'
-import Whislist from './components/Whislist/Whislist.jsx'
-import Product from './components/Product/Product.jsx'
-import Description from './components/Product/Discription/Description.jsx'
-import FAQ from './components/Product/FAQ/FAQ.jsx'
-import Cart from './components/Cart/Cart.jsx'
-import { Provider } from 'react-redux'
-import store from './app/store.js'
-import AdminPanel from './components/AdminPanel/AdminPanel.jsx'
-import Login from './components/AdminPanel/login.jsx'
-import AddProduct from "./components/AdminPanel/AddProduct.jsx";
+import { createRoot } from "react-dom/client";
+import "./index.css";
+import { createBrowserRouter, RouterProvider } from "react-router";
+import { Provider } from "react-redux";
+import store from "./app/store.js";
+import React, { Suspense, lazy } from "react";
 
+// Lazy imports
+const App = lazy(() => import("./App.jsx"));
+const Footer = lazy(() => import("./components/Footer/Footer"));
+const Home = lazy(() => import("./components/Home/Home.jsx"));
+const Shop = lazy(() => import("./components/Shop/Shop.jsx"));
+const Product = lazy(() => import("./components/Product/Product.jsx"));
+const Description = lazy(() => import("./components/Product/Description/Description.jsx"));
+const FAQ = lazy(() => import("./components/Product/FAQ/FAQ.jsx"));
+const Cart = lazy(() => import("./components/Cart/Cart.jsx"));
+const AdminPanel = lazy(() => import("./components/AdminPanel/AdminPanel.jsx"));
+const AddProduct = lazy(() => import("./components/AdminPanel/AddProduct.jsx"));
+const DashboardHome = lazy(() => import("./components/AdminPanel/DashboardHome.jsx"));
+const Orders = lazy(() => import("./components/AdminPanel/Orders.jsx"));
 
-let login = false;
-function handelLoginFlag(setLogin){
-  login = setLogin;
-}
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <App />,
     children: [
+      { index: true, element: <Home /> },
+      { path: "contact", element: <Footer /> },
+      { path: "about", element: <Footer /> },
+      { path: "shop", element: <Shop /> },
+      { path: "cart", element: <Cart /> },
       {
-        path: '/',
-        element: <Home />
-      },
-      {
-        path: 'contact',
-        element: <Footer />
-      },
-      {
-        path: 'about',
-        element: <Footer />
-      },
-      {
-        path: 'shop',
-        element: <Shop />
-      },
-      {
-        path: 'wishlist',
-        element: <Whislist />
-      },
-      {
-        path: 'Cart',
-        element: <Cart />
-      },
-      {
-        path: 'shop/Product/:productID',
+        path: "shop/product/:productID",
         element: <Product />,
         children: [
-          {
-            index:true,
-            element: <Description />
-          },
-          {
-            path: 'FAQ',
-            element: <FAQ />
-          }
-        ]
-      }
-
-    ]
+          { index: true, element: <Description /> },
+          { path: "faq", element: <FAQ /> },
+        ],
+      },
+    ],
   },
   {
-    path: 'AdminPanel',
-    element:<AdminPanel /> ,
-    children:[{
-      path: 'addProduct',
-      element: <AddProduct />,
-    },{
-      path: 'Orders',
-      // element: <Orders/>
-    }]
+    path: "adminpanel",
+    element: <AdminPanel />,
+    children: [
+      { index: true, element: <DashboardHome /> },
+      // { path: "home", element: <DashboardHome /> },
+      { path: "addproduct", element: <AddProduct /> },
+      { path: "orders", element: <Orders /> },
+    ],
   },
+]);
 
-])
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-  <Provider store={store}>
-    <RouterProvider router={router} />
-  </Provider>
-  </StrictMode>
-)
+createRoot(document.getElementById("root")).render(
+    <Provider store={store}>
+      <Suspense fallback={<div>Loading...</div>}>
+        <RouterProvider router={router} />
+      </Suspense>
+    </Provider>
+);

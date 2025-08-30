@@ -20,11 +20,10 @@ function Login() {
 
     useEffect(() => {
         if (!isLoading && isSuccess) {
-            dispatch(setToken(data?.accessToken))
+            // dispatch(setToken(data?.accessToken))
             dispatch(setLogin(true))
         }
     }, [data, isSuccess, isLoading, dispatch])
-
 
     return (
         <>
@@ -68,7 +67,7 @@ function Login() {
 
                     <div className="mt-6 text-sm text-center">
                         {error && (
-                            <p className="text-red-500">Invalid credentials or server error.</p>
+                            <p className="text-red-500 text-xl">Invalid credentials or server error.</p>
                         )}
                     </div>
                 </div>

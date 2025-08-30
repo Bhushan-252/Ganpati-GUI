@@ -17,7 +17,6 @@ function WhisListCard({data,deleteItem}) {
     // };
 
     function moveToCart(data){
-        console.log(data)
         dispatch(addCart(data));
         deleteItem(data.id)
     }

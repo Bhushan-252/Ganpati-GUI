@@ -1,6 +1,6 @@
 import React from 'react'
-import gallar1 from '../../../assets/image_1.jpeg'
-import gallar2 from '../../../assets/image_2.jpeg'
+import gallar1 from '../../../assets/Ganpati Bapa (1).jpeg'
+import gallar2 from '../../../assets/Ganpati Bapa (2).jpeg'
 
 export default function Category() {
     return (

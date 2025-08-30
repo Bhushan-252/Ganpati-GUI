@@ -13,7 +13,8 @@ export const LoginApi = createApi({
                     return{
                         url:'/login',
                         method:'POST',
-                        body:formData
+                        body:formData,
+                        responseHandler: async  (response) => await response.text()
                     }
                 }
             }),

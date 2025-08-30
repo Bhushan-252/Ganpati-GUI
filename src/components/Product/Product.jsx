@@ -7,7 +7,7 @@ import {Link, Outlet} from 'react-router'
 import {useGetProductQuery} from "../../services/products/products.js";
 import {useDispatch} from "react-redux";
 import {addCart} from "../../features/Cart/cartSlice.js";
-import Description from "./Discription/Description.jsx";
+import Description from "./Description/Description.jsx";
 import FAQ from "./FAQ/FAQ.jsx";
 
 function Product() {
@@ -18,16 +18,7 @@ function Product() {
     const {data, isLoading} = useGetProductQuery(id.productID)
 
     useEffect(() => {
-        // const myInterval = setInterval(() => {
             const images = data?.productImages;
-        //     images.forEach((image) => {
-        //         // setImage(image)
-        //     })
-        // }, 1000)
-        //
-        // return () => {
-        //     clearInterval(myInterval);
-        // }
         if (images !== undefined)
             setImage(images[0]);
     }, [data?.productImages])
@@ -50,40 +41,47 @@ function Product() {
 
     return (
         <>
-            <section className='flex justify-center '>
-                <div className='flex items-center flex-col w-[90%] h-[60dvh]'>
+            <section className='flex max-sm:flex-col justify-center lg:justify-around lg:w-[90%] lg:ml-auto lg:mr-auto'>
+                <div className='flex max-sm:flex-col flex-col items-center lg:w-fit '>
                     <img
                         loading='lazy'
                         src={`http://localhost:8080${image}`}
-                        alt=''
-                        className='m-2 px-4 object-cover ease-in-out transition-all w-full h-2/3'
+                        alt='image'
+                        className='m-2 h-[250px] w-[400px] lg:h-[550px] lg:w-[550px] object-contain border border-gray-400 p-2'
                     />
 
-                    <div className='flex mx-4 p-2 justify-evenly w-full border-1 overflow-hidden border-red-200'>
-
+                    <div className='flex p-2 justify-evenly  '>
                         {data?.productImages?.map((imagesSrc,index) => (
                             <div onClick={() => changeImage(imagesSrc)}
                                  key={index}
-                                 className='w-fit active:shadow-md shadow-black border-red-100 border-1'>
-                                <img loading='lazy' src={`http://localhost:8080${imagesSrc}`} alt='' className=' w-full h-full object-cover'/>
+                                 className='w-fit active:shadow-md shadow-black m-1'>
+                                <img loading='lazy' src={`http://localhost:8080${imagesSrc}`} alt='' className='w-[100px] h-[100px] object-cover'/>
                             </div>
                         ))
                         }
 
+                    </div>
+                </div>
+                <div className=" lg:w-1/2 ">
+                    <Title data={data} setQuantity = {setQuantity} quantity={quantity}/>
+                    <div className=" p-3 text-xl m-1 max-md:hidden  ">
+                        <h2>
+                            lorem ipsum dolor sit amet lorem lorem ipsum dolor sit amet loremlorem ipsum dolor sit amet loremlorem ipsum dolor sit amet loremlorem ipsum dolor sit amet lorem
+                            lorem ipsum dolor sit amet loremlorem ipsum dolor sit amet loremlorem ipsum dolor sit amet lorem
+                        </h2>
+                    </div>
+                    {data?.maxQuantity > 0 ? <Purchase handlePurchase={handlePurchase}/> : <div className='active:shadow-xl active:bg-wefront active:text-white border-2 w-fit p-2 m-1 text-xl text-wefront border-wefront rounded-[0.5rem] text-center'> Notify me
+                    </div> }
 
+                    <div className='flex-col flex bg-[#EBEDF0] p-4 justify-around'>
+                        <h1 className="text-2xl font-semibold mx-2 mt-2 pt-2">Description</h1>
+                        <Description disc={data?.description} />
+                        <h1 className="text-2xl font-semibold mx-2 mt-2 pt-2">FAQ</h1>
+                        <FAQ/>
                     </div>
                 </div>
             </section>
-            <Title data={data} setQuantity = {setQuantity} quantity={quantity}/>
-            {data?.maxQuantity > 0 ? <Purchase handlePurchase={handlePurchase}/> : <div className='active:shadow-xl active:bg-wefront active:text-white border-2 w-fit p-2 m-1 text-xl text-wefront border-wefront rounded-[0.5rem] text-center'> Notify me
-            </div> }
 
-            <div className='flex-col flex bg-[#EBEDF0] p-4 justify-around'>
-                <h1 className="text-2xl font-semibold mx-2 mt-2 pt-2">Description</h1>
-                <Description disc={data?.description} />
-                <h1 className="text-2xl font-semibold mx-2 mt-2 pt-2">FAQ</h1>
-                <FAQ/>
-            </div>
 
         </>
     )

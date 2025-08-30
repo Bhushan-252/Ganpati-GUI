@@ -1,0 +1,8 @@
+
+                        {temp ?
+                            temp.map((t, i) => {
+                                return (
+                                    <img src={t} alt="" srcSet="" key={i}/>
+                                );
+                            }) : null
+                        }
